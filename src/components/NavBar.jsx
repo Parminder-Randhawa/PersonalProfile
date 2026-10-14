@@ -1,26 +1,58 @@
+import { useState } from 'react';
+import { navLinks } from '../constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faXmark} from '@fortawesome/free-solid-svg-icons';
 
 const NavBar = () => {
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header>
         <nav>
 
-          <ul>
-            {[
-              {label: 'Home'},
-              {label: 'About'},
-              {label: 'Experience'},
-              {label: 'Projects'},
-              {label: 'Contact'}
-            ].map(({label}) => (
+          <a href="#home" className='mobile-home'>
+            Home
+          </a>
+
+          <ul className='desktop-nav'>
+
+            {navLinks.map(({label}) => (
+
               <li key={label}>
-                <a href={label}>{label}</a>
+                <a href={'#${label.toLowerCase()}'}>{label}</a>
               </li>
+
             ))}
           </ul>
 
-          <a href="/resume.pdf" className='resume-button'>Resume</a>
+          <a href="/resume.pdf" className='resume-button'>
+          Resume
+          </a>
+
+          <button className='menu-toggle' onClick= {() => setMenuOpen(prev => !prev)}>
+            <FontAwesomeIcon icon= {menuOpen ? faXmark : faBars} />
+          </button>
+
+          {menuOpen && (
+            <ul className='mobile-menu'>
+      
+              {navLinks.slice(1, -1).map(({label}) => (
+
+                <li key={label}>
+                  <a href={'#${label.toLowerCase()}'} onClick={closeMenu}>{label}</a>
+                </li>
+                
+              ))}
+
+              <li>
+                <a href="/resume.pdf" onClick={closeMenu}>
+                  Resume
+                </a>
+              </li>
+            </ul>
+          )}
 
         </nav>
     </header>
