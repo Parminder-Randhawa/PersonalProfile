@@ -173,46 +173,33 @@ body {
     }
   } */
 
-  #product-viewer {
-    @apply container relative min-h-[93vh] mx-auto px-5 2xl:px-0 mt-40;
 
-    h2 {
-      @apply text-white font-semibold text-3xl lg:text-6xl;
-    }
 
-    .controls {
-      @apply absolute z-50 bottom-40 lg:bottom-40 2xl:bottom-52 left-1/2 -translate-x-1/2;
-
-      .info {
-        @apply text-xs text-white bg-black/20 px-2 py-1 rounded-lg;
-      }
-
-      .color-control {
-        @apply flex-between bg-neutral-800 rounded-full px-6 py-3 gap-4;
-
-        div {
-          @apply size-7 rounded-full cursor-pointer;
-        }
-
-        .active {
-          @apply ring-5 size-5 ring-light-100;
-        }
-      }
-
-      .size-control {
-        @apply small-medium flex-between bg-neutral-800 rounded-full px-6 py-2.5 gap-2;
-
-        div {
-          @apply size-8 rounded-full cursor-pointer bg-white text-black flex-center;
-        }
-      }
-    }
-
+  #about-me {
+    @apply relative min-h-[93vh] w-full mx-auto px-10 md:px-10 lg:px-12 2xl:px-24 mt-30;
+    
     #canvas {
-      @apply !w-full !h-[80vh] lg:!h-dvh relative z-40;
+    @apply !w-[300px] !h-[400px] md:!w-[450px] md:!h-[450px];
+    }
+
+    .screen-control {
+    @apply flex items-center justify-center gap-1 w-fit mx-auto mt-6 p-1 ;
+
+    button {
+      @apply flex flex-col items-center gap-2 w-20 px-5 pt-4 pb-2 rounded-3xl text-neutral-400 font-regular text-xs cursor-pointer hover:text-white transition-colors duration-200;
+    }
+
+    button svg {
+      @apply text-xl;
+    }
+
+    button.active {
+      @apply bg-neutral-600 text-white;
+    }
     }
   }
 
+  
   #showcase {
     @apply relative;
 
@@ -254,7 +241,13 @@ body {
         @apply font-semibold text-xl lg:text-5xl text-white;
       }
     }
-  }
+  } 
+
+
+
+
+
+
 
   #performance {
     @apply w-dvw h-full overflow-hidden pt-20 lg:pt-20 flex flex-col items-center relative;
