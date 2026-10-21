@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faMountainSun, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
 import clsx from 'clsx';
 import { Canvas } from '@react-three/fiber';
-import { Box, OrbitControls } from "@react-three/drei";
+import { Center, PresentationControls } from "@react-three/drei";
 import MacbookModel14 from './models/Macbook-14';
 import StudioLights from './StudioLights';
 
@@ -19,15 +19,25 @@ const AboutMe = () => {
                 Who am I?
             </h2>
 
-            <div className='absolute z-50 bottom-20 md:bottom-30 2xl:bottom-52 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-30'>
+            <div className='laptop-area'>
 
                 <Canvas 
                     id='canvas' 
-                    camera={{position: [2, 1, 5], fov: 50, near: 0.1, far: 100}}
+                    camera={{position: [0, 1, 8], fov: 50, near: 0.1, far: 100}}
                 >
                     <StudioLights intensity={1} />
-                    <MacbookModel14 scale= {0.15} position= {[-1, -2, 0]} />
-                    <OrbitControls enableZoom= {false}></OrbitControls>
+                    <PresentationControls 
+                        global={false}
+                        cursor={true}
+                        snap={true}
+                        speed={1}
+                        rotation={[0, -0.4, 0]}
+                        config={{ mass: 1, tension: 170, friction: 26 }}
+                    >
+                        <Center>
+                        <MacbookModel14 scale={0.15} />
+                        </Center>
+                    </PresentationControls>
                 </Canvas>
 
                 <div className='screen-control'>
@@ -55,11 +65,8 @@ const AboutMe = () => {
                         <FontAwesomeIcon icon={faGraduationCap} />
                         <span>Journey</span>
                     </button>
-
                 </div>
             </div>
-
-            
         </section>
   )
 }

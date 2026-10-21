@@ -176,26 +176,30 @@ body {
 
 
   #about-me {
-    @apply relative min-h-[93vh] w-full mx-auto px-10 md:px-10 lg:px-12 2xl:px-24 mt-30;
+    @apply relative isolate min-h-[93vh] w-full mx-auto px-10 lg:px-12 2xl:px-24 mt-30;
     
+    .laptop-area {
+      @apply absolute inset-y-0 left-0 w-full md:left-auto md:right-0 md:w-1/2;
+    }
+
     #canvas {
-    @apply !w-[400px] !h-[400px] md:!w-[450px] md:!h-[450px];
+      @apply !w-[150%] !h-[55%] md:!h-full relative z-0 translate-y-58 md:-translate-y-25 -translate-x-23 md:-translate-x-38;
     }
 
     .screen-control {
-    @apply flex items-center justify-center gap-1 w-fit mx-auto mt-6 p-1 ;
+      @apply absolute z-20 bottom-15 md:bottom-20 2xl:bottom-52 left-1/2 -translate-y-5 -translate-x-35 md:-translate-x-60 rotate-[10deg] flex items-center justify-center gap-1 w-fit p-1;
 
-    button {
-      @apply flex flex-col items-center gap-2 w-20 px-5 pt-4 pb-2 rounded-3xl text-neutral-400 font-regular text-xs cursor-pointer hover:text-white transition-colors duration-200;
-    }
+      button {
+        @apply flex flex-col items-center gap-2 w-20 px-5 pt-3 pb-2 rounded-3xl text-neutral-400 font-regular text-xs cursor-pointer hover:text-white transition-colors duration-200;
+      }
 
-    button svg {
-      @apply text-xl;
-    }
+      button svg {
+        @apply text-xs md:text-xl;
+      }
 
-    button.active {
-      @apply bg-neutral-600 text-white;
-    }
+      button.active {
+        @apply bg-neutral-600 text-white;
+      }
     }
   }
 
