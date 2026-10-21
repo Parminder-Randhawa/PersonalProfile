@@ -1,10 +1,11 @@
-import React from 'react'
 import useLaptopStore from '../store'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faMountainSun, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
 import clsx from 'clsx';
 import { Canvas } from '@react-three/fiber';
 import { Box, OrbitControls } from "@react-three/drei";
+import MacbookModel14 from './models/Macbook-14';
+import StudioLights from './StudioLights';
 
 
 const AboutMe = () => {
@@ -24,7 +25,8 @@ const AboutMe = () => {
                     id='canvas' 
                     camera={{position: [2, 1, 5], fov: 50, near: 0.1, far: 100}}
                 >
-                    <Box scale= {2}></Box>
+                    <StudioLights intensity={1} />
+                    <MacbookModel14 scale= {0.15} position= {[-1, -2, 0]} />
                     <OrbitControls enableZoom= {false}></OrbitControls>
                 </Canvas>
 

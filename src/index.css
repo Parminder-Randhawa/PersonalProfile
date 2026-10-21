@@ -179,7 +179,7 @@ body {
     @apply relative min-h-[93vh] w-full mx-auto px-10 md:px-10 lg:px-12 2xl:px-24 mt-30;
     
     #canvas {
-    @apply !w-[300px] !h-[400px] md:!w-[450px] md:!h-[450px];
+    @apply !w-[400px] !h-[400px] md:!w-[450px] md:!h-[450px];
     }
 
     .screen-control {
