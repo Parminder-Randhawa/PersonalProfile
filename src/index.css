@@ -43,6 +43,19 @@
   --color-dark-100: #86868b;
   --color-dark-200: #2e2e30;
   --color-light-100: #adb5bd;
+
+  --animate-ripple: ripple 2.5s ease-in-out infinite;
+}
+
+
+@keyframes ripple {
+  0%, 45%, 100% {
+    transform: translateY(0);
+  }
+
+  20% {
+    transform: translateY(4px);
+  }
 }
 
 html {
@@ -131,7 +144,8 @@ body {
     }
   }
 
-  #hero {
+
+  /* #hero {
     @apply h-fit lg:h-[80vh] col-center mt-40 lg:mt-20 2xl:mt-[7vh];
 
     div {
@@ -157,7 +171,7 @@ body {
     p {
       @apply lg:h3-semibold base-semibold;
     }
-  }
+  } */
 
   #product-viewer {
     @apply container relative min-h-[93vh] mx-auto px-5 2xl:px-0 mt-40;

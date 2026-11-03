@@ -21,7 +21,7 @@ const NavBar = () => {
             {navLinks.map(({label}) => (
 
               <li key={label}>
-                <a href={'#${label.toLowerCase()}'}>{label}</a>
+                <a href={`#${label.toLowerCase()}`}>{label}</a>
               </li>
 
             ))}
