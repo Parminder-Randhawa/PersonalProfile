@@ -7,14 +7,70 @@ License: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 Source: https://sketchfab.com/3d-models/macbook-pro-m3-16-inch-2024-8e34fc2b303144f78490007d91ff57c4
 Title: macbook pro M3 16 inch 2024
 */
-
-import React from 'react'
+import React, { useMemo, useEffect } from 'react'
+import { SRGBColorSpace } from 'three'
 import { useGLTF, useTexture } from '@react-three/drei'
 
-export default function MacbookModel14(props) {
+export default function MacbookModel14({image, zoom=1, moveX=0, moveY=0, ...props}) {
   const { nodes, materials } = useGLTF('/models/macbook-14-transformed.glb')
 
-  const texture = useTexture('/screen.png');
+  const [meTexture, interestsTexture, adventuresTexture] = useTexture([
+    '/me.jpeg',
+    '/interests.jpeg',
+    '/adventures.jpeg'
+  ])
+
+  const textures = {
+    '/me.jpeg': meTexture,
+    '/interests.jpeg': interestsTexture,
+    '/adventures.jpeg': adventuresTexture
+  }
+
+const source = textures[image]
+
+  // Clone so cropping does not modify the cached texture used elsewhere.
+  const texture = useMemo(() => {
+
+    const t = source.clone();
+    t.colorSpace = SRGBColorSpace;
+    const screen = nodes.Object_123.geometry;
+    screen.computeBoundingBox();
+    const b = screen.boundingBox;
+    const screenAspect = (b.max.x - b.min.x) / Math.hypot(b.max.y - b.min.y, b.max.z - b.min.z);
+    const imageAspect = source.image.width / source.image.height;
+
+    // Centered cover fit, then account for the model's UV inset.
+    if (imageAspect < screenAspect) {
+      t.repeat.set(1, imageAspect / screenAspect);
+      t.offset.set(0, (1 - t.repeat.y) / 2);
+    } else {
+      t.repeat.set(screenAspect / imageAspect, 1);
+      t.offset.set((1 - t.repeat.x) / 2, 0);
+    }
+
+    t.offset.x += (t.repeat.x * (1 - 1 / zoom)) / 2 + moveX
+    t.offset.y += (t.repeat.y * (1 - 1 / zoom)) / 2 + moveY
+
+    t.repeat.multiplyScalar(1 / zoom)
+
+    const uv = screen.attributes.uv;
+    let u0 = Infinity, v0 = Infinity, u1 = -Infinity, v1 = -Infinity;
+
+    for (let i = 0; i < uv.count; i++) {
+      u0 = Math.min(u0, uv.getX(i)); u1 = Math.max(u1, uv.getX(i));
+      v0 = Math.min(v0, uv.getY(i)); v1 = Math.max(v1, uv.getY(i));
+    }
+
+    t.repeat.x /= u1 - u0;
+    t.repeat.y /= v1 - v0;
+    t.offset.x -= u0 * t.repeat.x;
+    t.offset.y -= v0 * t.repeat.y;
+    t.needsUpdate = true;
+    return t;
+  }, [source, nodes, zoom, moveX, moveY]);
+
+  useEffect(() => () => texture.dispose(), [texture]);
+
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Object_10.geometry} material={materials.PaletteMaterial001} rotation={[Math.PI / 2, 0, 0]} />
@@ -35,12 +91,17 @@ export default function MacbookModel14(props) {
       <mesh geometry={nodes.Object_96.geometry} material={materials.PaletteMaterial003} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_107.geometry} material={materials.JvMFZolVCdpPqjj} rotation={[Math.PI / 2, 0, 0]} />
       {/* Screen */}
-      <mesh geometry={nodes.Object_123.geometry} material={materials.sfCQkHOWyrsLmor} rotation={[Math.PI / 2, 0, 0]}>
-        <meshBasicMaterial map= {texture} />
+      <mesh geometry={nodes.Object_123.geometry} rotation={[Math.PI / 2, 0, 0]}>
+        <meshBasicMaterial map={texture} toneMapped={false} />
       </mesh>
-      <mesh geometry={nodes.Object_127.geometry} material={materials.ZCDwChwkbBfITSW} rotation={[Math.PI / 2, 0, 0]} />
+      <mesh geometry={nodes.Object_127.geometry} material={materials.ZCDwChwkbBfITSW} rotation={[Math.PI / 2, 0, 0]}/>
     </group>
   )
 }
 
 useGLTF.preload('/models/macbook-14-transformed.glb')
+useTexture.preload([
+  '/me.jpeg',
+  '/interests.jpeg',
+  '/adventures.jpeg'
+])
