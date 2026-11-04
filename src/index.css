@@ -176,7 +176,7 @@ body {
     }
 
     .screen-control-buttons {
-      @apply absolute z-20 bottom-15 md:bottom-20 2xl:bottom-52 left-1/2 -translate-y-5 md:-translate-y-5 -translate-x-1/2 md:-translate-x-60 md:rotate-[11deg] flex-center gap-1 w-fit p-1;
+      @apply absolute z-20 bottom-8 md:bottom-20 2xl:bottom-52 left-1/2 -translate-y-5 md:-translate-y-5 -translate-x-1/2 md:-translate-x-60 md:rotate-[11deg] flex-center gap-1 w-fit p-1;
 
       button {
         @apply flex flex-col items-center gap-2 w-20 px-5 pt-3 pb-2 rounded-3xl text-neutral-400 font-regular text-xs cursor-pointer hover:text-white transition-colors duration-200;
@@ -193,22 +193,25 @@ body {
   }
 
   
+
+  
   #showcase {
     @apply relative;
 
     .media {
-      @apply relative lg:overflow-hidden;
+      @apply relative aspect-video lg:overflow-hidden;
 
       video {
         @apply w-full object-cover object-center;
       }
 
       .mask {
-        @apply absolute h-full top-0 lg:-top-20 xl:top-0;
+        @apply absolute inset-0 w-full h-full;
 
         img {
-          @apply h-full scale-150 lg:scale-100;
-          transform: matrix(80, 0, 0, 80, 0, 0);
+          @apply w-full h-full object-contain;
+          scale: 1;
+          transform: none;
         }
 
         @media (max-width: 1024px) {
