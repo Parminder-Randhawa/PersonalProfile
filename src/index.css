@@ -58,6 +58,18 @@
   }
 }
 
+@keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
 html {
   width: 100vw;
   overflow-x: hidden;
@@ -144,50 +156,27 @@ body {
     }
   }
 
-
-  /* #hero {
-    @apply h-fit lg:h-[80vh] col-center mt-40 lg:mt-20 2xl:mt-[7vh];
-
-    div {
-      @apply relative z-10 col-center lg:translate-y-16;
-
-      h1 {
-        @apply font-semibold lg:text-3xl 2xl:text-5xl text-white;
-      }
-
-      img {
-        @apply container mx-auto w-2/3;
-      }
-    }
-
-    video {
-      @apply mx-auto lg:translate-y-5 2xl:translate-y-0;
-    }
-
-    button {
-      @apply relative z-10 bg-primary text-white py-2 px-6 mt-10 lg:mt-0 mb-5 rounded-full font-semibold text-lg cursor-pointer hover:bg-white hover:text-black transition-all duration-300 ease-in-out;
-    }
-
-    p {
-      @apply lg:h3-semibold base-semibold;
-    }
-  } */
-
-
-
   #about-me {
     @apply relative isolate min-h-[93vh] w-full mx-auto px-10 lg:px-12 2xl:px-24 mt-30;
+
+    .aboutme-text {
+      @apply relative max-w-xl;
+
+      .aboutme-description {
+        animation: fade-in 0.6s ease-out both;
+      }
+    }
     
     .laptop-area {
-      @apply absolute inset-y-0 left-0 w-full md:left-auto md:right-0 md:w-1/2;
+      @apply absolute inset-y-0 left-0 w-full flex-center md:block md:left-auto md:right-0 md:w-1/2;
     }
 
     #canvas {
-      @apply !w-[150%] !h-[55%] md:!h-full relative z-0 translate-y-58 md:-translate-y-25 -translate-x-23 md:-translate-x-38;
+      @apply !w-[150%] !h-[55%] md:!h-full relative z-0 translate-y-15 md:-translate-y-25 md:-translate-x-38;
     }
 
-    .screen-control {
-      @apply absolute z-20 bottom-15 md:bottom-20 2xl:bottom-52 left-1/2 -translate-y-5 -translate-x-35 md:-translate-x-60 rotate-[10deg] flex items-center justify-center gap-1 w-fit p-1;
+    .screen-control-buttons {
+      @apply absolute z-20 bottom-15 md:bottom-20 2xl:bottom-52 left-1/2 -translate-y-5 md:-translate-y-5 -translate-x-1/2 md:-translate-x-60 md:rotate-[11deg] flex-center gap-1 w-fit p-1;
 
       button {
         @apply flex flex-col items-center gap-2 w-20 px-5 pt-3 pb-2 rounded-3xl text-neutral-400 font-regular text-xs cursor-pointer hover:text-white transition-colors duration-200;
@@ -198,7 +187,7 @@ body {
       }
 
       button.active {
-        @apply bg-neutral-600 text-white;
+        @apply bg-neutral-600/50 text-white;
       }
     }
   }
