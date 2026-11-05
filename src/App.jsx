@@ -4,6 +4,7 @@ import AboutMe from './components/AboutMe'
 import Showcase from './components/Showcase'
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/all";
+import Projects from './components/Projects';
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -14,6 +15,7 @@ const App = () => {
       <Hero/>
       <AboutMe/>
       <Showcase/>
+      <Projects/>
     </main>
   )
 }
