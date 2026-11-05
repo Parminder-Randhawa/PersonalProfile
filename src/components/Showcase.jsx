@@ -14,7 +14,7 @@ const Showcase = () => {
             const timeline = gsap.timeline({
                 scrollTrigger: {
                     trigger: '#showcase',
-                    start: 'top top',
+                    start: 'top 30px',
                     end: 'bottom top',
                     scrub: true,
                     pin: true
@@ -22,8 +22,8 @@ const Showcase = () => {
             })
 
             timeline.fromTo('.mask img',
-                {scale: 140, transformOrigin: '52% 52%'},
-                {scale: 1, ease: 'power2.out', duration: 5 }
+                {scale: 140, transformOrigin: '45.2% 38.2%'},
+                {scale: 1, ease: 'power2.out', duration: 3 }
             ).to('.content', {opacity: 1, y: 0, ease: 'power1.in'})
         }
     }, [isMobile])
@@ -31,13 +31,11 @@ const Showcase = () => {
     return (
         <section id='showcase'>
             <div className='media'>
-                <video src="/IMG_1478.MOV" loop muted autoPlay playsInline onLoadedMetadata={() => ScrollTrigger.refresh()}/>
+                <video src="/videos/IMG_1478.MOV" loop muted autoPlay playsInline onLoadedMetadata={() => ScrollTrigger.refresh()}/>
                 <div className='mask'>
-                    <img src="/mask3.png"/>
+                    <img src="/mask6.png"/>
                 </div>
             </div>
-
-            <div className='content'></div>
         </section>
   )
 }
