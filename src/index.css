@@ -193,8 +193,6 @@ body {
   }
 
   
-
-  
   #showcase {
     @apply relative;
 
@@ -224,6 +222,13 @@ body {
   } 
 
 
+  #projects {
+    @apply relative w-full min-h-screen py-24 overflow-hidden;
+
+    .projects-heading {
+      @apply text-center px-6 mb-16;
+    }
+  }
 
 
   #performance {

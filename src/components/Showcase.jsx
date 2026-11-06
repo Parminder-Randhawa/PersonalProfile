@@ -1,6 +1,6 @@
-import { useGSAP } from '@gsap/react';
 import { useMediaQuery } from 'react-responsive';
 import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Showcase = () => {
@@ -11,22 +11,18 @@ const Showcase = () => {
 
         if(!isMobile) {
 
-            const timeline = gsap.timeline({
-                scrollTrigger: {
+            gsap.fromTo('.mask img',
+                {scale: 140, transformOrigin: '45.2% 38.2%'},
+                {scale: 1, ease: 'power2.out', duration: 3, scrollTrigger: {
                     trigger: '#showcase',
                     start: 'top 30px',
                     end: 'bottom top',
                     scrub: true,
                     pin: true
+                    }  
                 }
-            })
-
-            timeline.fromTo('.mask img',
-                {scale: 140, transformOrigin: '45.2% 38.2%'},
-                {scale: 1, ease: 'power2.out', duration: 3 }
-            ).to('.content', {opacity: 1, y: 0, ease: 'power1.in'})
-        }
-    }, [isMobile])
+            )
+        }}, [isMobile])
 
     return (
         <section id='showcase'>

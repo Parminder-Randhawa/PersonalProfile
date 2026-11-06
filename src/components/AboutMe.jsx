@@ -32,7 +32,6 @@ const aboutContent = {
     }
 }
 
-
 const AboutMe = () => {
 
     const isMobile = useMediaQuery({ maxWidth: 767 })

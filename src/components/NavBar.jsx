@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { navLinks } from '../constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark} from '@fortawesome/free-solid-svg-icons';
 
@@ -18,7 +17,13 @@ const NavBar = () => {
 
           <ul className='desktop-nav'>
 
-            {navLinks.map(({label}) => (
+            {[
+              {label: 'Home'},
+              {label: 'About'},
+              {label: 'Projects'},
+              {label: 'Experience'},
+              {label: 'Contact'}
+            ].map(({label}) => (
 
               <li key={label}>
                 <a href={`#${label.toLowerCase()}`}>{label}</a>
