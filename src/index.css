@@ -228,6 +228,53 @@ body {
     .projects-heading {
       @apply text-center px-6 mb-16;
     }
+
+    .projects-section {
+      @apply w-full overflow-hidden select-none;
+    }
+
+    .projects-row {
+      @apply flex;
+      touch-action: pan-y pinch-zoom;
+    }
+
+    .project-cards {
+      @apply shrink-0 w-80 md:w-110 bg-dark-200 rounded-3xl overflow-hidden;
+
+      transform: scale(0.80);
+      opacity: 0.5;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+
+      &.active {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+
+      img {
+        @apply w-full h-52 object-cover;
+      }
+
+      .project-info {
+        @apply p-6;
+      }
+
+      .project-technologies {
+        @apply flex flex-wrap gap-2 mt-5;
+
+        span {
+          @apply text-xs font-regular text-neutral-300 bg-neutral-700/50 px-3 py-1 rounded-full;
+        }
+      }
+    }
+
+    .projects-controls {
+      @apply flex justify-center gap-6 mt-6;
+
+      button {
+        @apply w-14 h-10 rounded-full border border-neutral-600 text-white text-xl cursor-pointer hover:bg-neutral-800 transition-colors;
+      }
+    }
   }
 
 

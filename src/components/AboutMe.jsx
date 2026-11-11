@@ -1,6 +1,6 @@
 import useLaptopStore from '../store'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faMountainSun, faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faMountainSun, faHeart } from '@fortawesome/free-solid-svg-icons';
 import clsx from 'clsx';
 import { Canvas } from '@react-three/fiber';
 import { Center, PresentationControls } from "@react-three/drei";
