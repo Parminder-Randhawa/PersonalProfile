@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { useMediaQuery } from 'react-responsive';
 
 const Hero = () => {
     const videoRef = useRef();
+    const isMobile = useMediaQuery({ maxWidth: 767 });
 
     useEffect(() => {
         if (videoRef.current) videoRef.current.playbackRate = 0.9;
@@ -12,23 +14,36 @@ const Hero = () => {
   return (
     <section
         id="hero"
-        className="h-fit lg:h-[80vh] flex flex-col items-center justify-center mt-40 lg:mt-24 2xl:mt-[7vh]"
+        className="h-fit lg:h-[80vh] flex flex-col items-center justify-center mt-26 md:mt-22 2xl:mt-[7vh]"
     >
 
         <div className="relative z-10 flex flex-col items-center text-center gap-3">
 
-            <h1 className="font-semibold text-3xl md:text-4xl lg:text-5xl text-white">
+            <h1 className="font-semibold text-4xl lg:text-5xl text-white">
                 Parminder Randhawa
             </h1>
 
-            <p className="font-regular text-sm md:text-base lg:text-lg text-dark-100">
+            <p className="font-regular text-md md:text-base lg:text-lg text-dark-100">
                 Computer Science Student @ The University of British Columbia
             </p>
         </div>
 
-        <video ref={videoRef} src="/videos/hero.mp4" autoPlay muted playsInline className='mt-14 lg:mt-0'></video>
+        <div className="w-full mt-6 md:h-auto md:max-h-none md:mt-0">
+            <video 
+                ref={videoRef} 
+                src={isMobile
+                    ? '/videos/ubc-mobile-hero.mp4'
+                    : '/videos/ubc-desktop-hero.mp4'
+                }
+                autoPlay 
+                muted 
+                playsInline 
+                loop 
+                className='w-full h-[50svh] md:h-auto'
+            />
+        </div>
     
-        <button className='relative z-10 bg-primary text-white py-1.5 px-4 md:px-5 lg:px-6 mt-55 lg:mt-0 mb-4 rounded-full font-semibold text-sm md:text-base lg:text-base cursor-pointer hover:bg-white hover:text-black transition-all duration-300 ease-in-out'>
+        <button className='relative z-10 bg-primary text-white py-1.5 px-4 md:px-5 lg:px-6 mt-12 md:mt-0 mb-4 rounded-full font-semibold text-sm md:text-base lg:text-base cursor-pointer hover:bg-white hover:text-black transition-all duration-300 ease-in-out'>
             Learn More
         </button>
 
