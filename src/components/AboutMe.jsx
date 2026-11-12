@@ -12,7 +12,7 @@ const aboutContent = {
     me: {
         title: 'A little about me.',
         description: "I'm a Computer Science student at UBC with a passion for technology, creativity, and building things. I love exploring new ideas, tackling challenges, and finding creative ways to solve problems. I'm always looking for opportunities to learn, grow, and develop my skills as an aspiring software developer.",
-        image: '/me.jpeg',
+        image: '/images/me.jpeg',
         zoom: 1.5,
         moveX: 0.02,
         moveY: -0.06
@@ -21,14 +21,14 @@ const aboutContent = {
     interests: {
         title: 'Beyond the screen.',
         description: "When I'm not coding, you'll usually find me staying active or trying something new. I enjoy playing basketball, working out, snowboarding, and hiking, especially when it means spending time outdoors with friends. I'm also passionate about technology, discovering new hobbies, and finding ways to challenge myself beyond the screen.",
-        image: '/interests.jpeg',
+        image: '/images/interests.jpeg',
         moveY: -0.06
     },
 
     adventures: {
         title: 'Always exploring.',
         description: "I love exploring new places, experiencing different cultures, and making memories along the way. From the streets of Tokyo and London to the charm of Paris and Edinburgh, and the beauty of Sydney, every destination offers something unique. I'm always excited to discover somewhere new and see more of what the world has to offer!",
-        image: '/adventures.jpeg',
+        image: '/images/adventures.jpeg',
     }
 }
 

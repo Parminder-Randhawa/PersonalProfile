@@ -197,7 +197,7 @@ body {
     @apply relative;
 
     .media {
-      @apply relative aspect-video lg:overflow-hidden;
+      @apply relative lg:overflow-hidden;
 
       video {
         @apply w-full object-cover object-center;
@@ -211,35 +211,37 @@ body {
           scale: 1;
           transform: none;
         }
-
-        @media (max-width: 768px) {
-          img {
-            transform: matrix(1, 0, 0, 1, 0, 0);
-          }
-        }
       }
     }
   } 
 
 
   #projects {
-    @apply relative w-full min-h-screen py-24 overflow-hidden;
+    @apply relative w-full min-h-screen py-20 overflow-hidden;
 
     .projects-heading {
       @apply text-center px-6 mb-16;
     }
 
     .projects-section {
-      @apply w-full overflow-hidden select-none;
+      @apply w-full select-none;
+
+      max-width: 1200px;
+      margin-inline: auto;
+
     }
 
     .projects-row {
-      @apply flex;
+      @apply flex items-stretch;
       touch-action: pan-y pinch-zoom;
     }
 
+    .project-cardsSLIDE {
+      @apply shrink-0 w-[70vw] sm:w-[65vw] md:w-[45vw] lg:w-[420px];
+    }
+
     .project-cards {
-      @apply shrink-0 w-80 md:w-110 bg-dark-200 rounded-3xl overflow-hidden;
+      @apply w-full h-full flex flex-col bg-dark-200 rounded-3xl overflow-hidden;
 
       transform: scale(0.80);
       opacity: 0.5;
@@ -250,17 +252,16 @@ body {
         opacity: 1;
       }
 
-
       img {
-        @apply w-full h-52 object-cover;
+        @apply w-full h-52 object-cover shrink-0;
       }
 
       .project-info {
-        @apply p-6;
+        @apply p-6 flex flex-col flex-1;
       }
 
       .project-technologies {
-        @apply flex flex-wrap gap-2 mt-5;
+        @apply flex flex-wrap gap-2 mt-auto pt-5;
 
         span {
           @apply text-xs font-regular text-neutral-300 bg-neutral-700/50 px-3 py-1 rounded-full;
@@ -272,7 +273,7 @@ body {
       @apply flex justify-center gap-6 mt-6;
 
       button {
-        @apply w-14 h-10 rounded-full border border-neutral-600 text-white text-xl cursor-pointer hover:bg-neutral-800 transition-colors;
+        @apply w-14 h-10 rounded-full border border-neutral-600 text-white text-xl cursor-pointer hover:bg-neutral-800 transition-colors select-none;
       }
     }
   }

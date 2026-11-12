@@ -15,15 +15,15 @@ export default function MacbookModel14({image, zoom=1, moveX=0, moveY=0, ...prop
   const { nodes, materials } = useGLTF('/models/macbook-14-transformed.glb')
 
   const [meTexture, interestsTexture, adventuresTexture] = useTexture([
-    '/me.jpeg',
-    '/interests.jpeg',
-    '/adventures.jpeg'
+    '/images/me.jpeg',
+    '/images/interests.jpeg',
+    '/images/adventures.jpeg'
   ])
 
   const textures = {
-    '/me.jpeg': meTexture,
-    '/interests.jpeg': interestsTexture,
-    '/adventures.jpeg': adventuresTexture
+    '/images/me.jpeg': meTexture,
+    '/images/interests.jpeg': interestsTexture,
+    '/images/adventures.jpeg': adventuresTexture
   }
 
 const source = textures[image]
