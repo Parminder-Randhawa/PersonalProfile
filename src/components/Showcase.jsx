@@ -27,13 +27,13 @@ const Showcase = () => {
     return (
         <section id='showcase'>
             <div className='media'>
-                <video src="/videos/IMG_1478.MOV" loop muted autoPlay playsInline onLoadedMetadata={() => ScrollTrigger.refresh()}/>
+                <video src="/videos/showcase.mp4" loop muted autoPlay playsInline onLoadedMetadata={() => ScrollTrigger.refresh()}/>
                 <div className='mask'>
                     <img src="/images/mask.png"/>
                 </div>
             </div>
         </section>
-  )
+    )
 }
 
 export default Showcase

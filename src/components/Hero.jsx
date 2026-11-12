@@ -43,9 +43,9 @@ const Hero = () => {
             />
         </div>
     
-        <button className='relative z-10 bg-primary text-white py-1.5 px-4 md:px-5 lg:px-6 mt-12 md:mt-0 mb-4 rounded-full font-semibold text-sm md:text-base lg:text-base cursor-pointer hover:bg-white hover:text-black transition-all duration-300 ease-in-out'>
+        <a href="#about-me" className='relative z-10 bg-primary text-white py-1.5 px-4 md:px-5 lg:px-6 mt-12 md:mt-0 mb-4 rounded-full font-semibold text-sm md:text-base lg:text-base cursor-pointer hover:bg-sky-500 hover:shadow-[0_0_24px_rgba(56,189,248,0.45)] transition-all duration-300 ease-in-out'>
             Learn More
-        </button>
+        </a>
 
         <p className='flex items-center text-xs text-dark-100'>
             <span className="flex">
