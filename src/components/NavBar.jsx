@@ -11,28 +11,21 @@ const NavBar = () => {
     <header>
         <nav>
 
-          <a href="#home" className='mobile-home'>
+          <a href="#hero" className='mobile-home'>
             Home
           </a>
 
           <ul className='desktop-nav'>
 
-            {[
-              {label: 'Home'},
-              {label: 'About'},
-              {label: 'Projects'},
-              {label: 'Experience'},
-              {label: 'Contact'}
-            ].map(({label}) => (
+            <a href="#hero">Home</a>
+            <a href="#about-me">About</a>
+            <a href="#projects">Projects</a>
+            {/* <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a> */}
 
-              <li key={label}>
-                <a href={`#${label.toLowerCase()}`}>{label}</a>
-              </li>
-
-            ))}
           </ul>
 
-          <a href="/resume.pdf" className='resume-button'>
+          <a href="/Parminder_Randhawa_Resume.pdf" className='resume-button'>
           Resume
           </a>
 
@@ -42,17 +35,14 @@ const NavBar = () => {
 
           {menuOpen && (
             <ul className='mobile-menu'>
-      
-              {navLinks.slice(1, -1).map(({label}) => (
 
-                <li key={label}>
-                  <a href={'#${label.toLowerCase()}'} onClick={closeMenu}>{label}</a>
-                </li>
-                
-              ))}
-
+              <a href="#about-me" onClick={closeMenu}>About</a>
+              <a href="#projects" onClick={closeMenu}>Projects</a>
+              {/* <a href="#experience" onClick={closeMenu}>Experience</a>
+              <a href="#contact" onClick={closeMenu}>Contact</a> */}
+              
               <li>
-                <a href="/resume.pdf" onClick={closeMenu}>
+                <a href="/Parminder_Randhawa_Resume.pdf" onClick={closeMenu}>
                   Resume
                 </a>
               </li>

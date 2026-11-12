@@ -80,7 +80,7 @@ const Projects = () => {
             {x: 0, opacity: 1, ease: 'none', scrollTrigger: {
                 trigger: '#projects',
                 start: 'top 80%',
-                end: 'top 5%',
+                end: 'top 10%',
                 scrub: 0.5
                 }
             }
