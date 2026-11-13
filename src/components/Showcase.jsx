@@ -1,28 +1,34 @@
-import { useMediaQuery } from 'react-responsive';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Showcase = () => {
 
-    const isMobile = useMediaQuery({ maxWidth: 767 });
-
     useGSAP(() => {
 
-        if(!isMobile) {
+        const media = gsap.matchMedia();
+
+        media.add('(width > 1000px)', () => {
 
             gsap.fromTo('.mask img',
-                {scale: 140, transformOrigin: '45.21% 32.94%'},
+                {scale: 70, transformOrigin: '45.21% 32.94%'},
                 {scale: 1, ease: 'power2.out', duration: 3, scrollTrigger: {
                     trigger: '#showcase',
-                    start: 'top 30px',
+                    start: 'top 70px',
                     end: 'bottom top',
                     scrub: true,
                     pin: true
                     }  
                 }
-            )
-        }}, [isMobile])
+            );
+        });
+
+        media.add('(width <= 1000px)', () => {
+            gsap.set('.mask img', { scale: 1 });
+        });
+
+        return () => media.revert();
+    }, []);
 
     return (
         <section id='showcase'>

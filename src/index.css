@@ -44,6 +44,7 @@
   --color-dark-200: #2e2e30;
   --color-light-100: #adb5bd;
 
+  --breakpoint-desktop: 1000px;
   --animate-ripple: ripple 2.5s ease-in-out infinite;
 }
 
@@ -158,7 +159,7 @@ body {
   }
 
   #about-me {
-    @apply relative isolate min-h-[93vh] w-full mx-auto px-10 lg:px-12 2xl:px-24 mt-30;
+    @apply relative isolate min-h-[644px] w-full mx-auto px-10 lg:px-12 2xl:px-24 mt-30;
 
     .aboutme-text {
       @apply relative max-w-xl;
@@ -169,22 +170,22 @@ body {
     }
     
     .laptop-area {
-      @apply absolute inset-y-0 left-0 w-full flex-center md:block md:left-auto md:right-0 md:w-1/2;
+      @apply absolute inset-y-0 left-0 w-full flex-center desktop:block desktop:left-auto desktop:right-0 desktop:w-1/2;
     }
 
     #canvas {
-      @apply !w-[150%] !h-[55%] md:!h-full relative z-0 translate-y-15 md:-translate-y-25 md:-translate-x-38;
+      @apply !w-[150%] !h-[55%] desktop:!h-full relative z-0 translate-y-15 desktop:-translate-y-25 desktop:-translate-x-38;
     }
 
     .screen-control-buttons {
-      @apply absolute z-20 bottom-8 md:bottom-20 2xl:bottom-52 left-1/2 -translate-y-5 md:-translate-y-5 -translate-x-1/2 md:-translate-x-60 md:rotate-[11deg] flex-center gap-1 w-fit p-1;
+      @apply absolute z-20 bottom-8 desktop:bottom-20 2xl:bottom-52 left-1/2 -translate-y-5 desktop:-translate-y-5 -translate-x-1/2 desktop:-translate-x-60 desktop:rotate-[11deg] flex-center gap-1 w-fit p-1;
 
       button {
         @apply flex flex-col items-center gap-2 w-20 px-5 pt-3 pb-2 rounded-3xl text-neutral-400 font-regular text-xs cursor-pointer hover:text-white transition-colors duration-200;
       }
 
       button svg {
-        @apply text-xs md:text-xl;
+        @apply text-xs desktop:text-xl;
       }
 
       button.active {
@@ -198,7 +199,7 @@ body {
     @apply relative;
 
     .media {
-      @apply relative lg:overflow-hidden;
+      @apply relative overflow-hidden;
 
       video {
         @apply w-full object-cover object-center;
@@ -334,6 +335,6 @@ body {
 
 #hero,
 #about-me,
-#projeccts {
+#projects {
   scroll-margin-top: 80px;
 }
