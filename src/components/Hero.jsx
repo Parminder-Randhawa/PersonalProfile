@@ -14,7 +14,7 @@ const Hero = () => {
   return (
     <section
         id="hero"
-        className="h-fit lg:h-[80vh] flex flex-col items-center justify-center mt-26 md:mt-22 2xl:mt-[7vh]"
+        className="min-h-[80vh] h-auto flex flex-col items-center justify-center mt-26 md:mt-22 2xl:mt-[7vh]"
     >
 
         <div className="relative z-10 flex flex-col items-center text-center gap-3">

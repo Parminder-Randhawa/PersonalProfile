@@ -7,6 +7,7 @@ import { Center, PresentationControls } from "@react-three/drei";
 import MacbookModel14 from './models/Macbook-14';
 import StudioLights from './StudioLights';
 import { useMediaQuery } from 'react-responsive';
+import useResizeReset from '../hooks/useResizeReset';
 
 const aboutContent = {
     me: {
@@ -34,7 +35,8 @@ const aboutContent = {
 
 const AboutMe = () => {
 
-    const isMobile = useMediaQuery({ maxWidth: 767 })
+    const resizeReset = useResizeReset();
+    const isVertical = useMediaQuery({ maxWidth: 1000 })
 
     const {activeScreen, setActiveScreen} = useLaptopStore();
     const currentContent = aboutContent[activeScreen]
@@ -65,22 +67,23 @@ const AboutMe = () => {
                     camera={{position: [0, 1, 8], fov: 50, near: 0.1, far: 100}}
                 >
                     <StudioLights intensity={1} />
-                    <PresentationControls 
+                    <PresentationControls
+                        key={`${isVertical}-${resizeReset}`}
                         global={false}
                         cursor={true}
                         snap={true}
                         speed={1}
-                        rotation={isMobile ? [0, 0, 0] : [0, -0.4, 0]}
+                        rotation={isVertical ? [0, 0, 0] : [0, -0.4, 0]}
                         config={{ mass: 1, tension: 170, friction: 26 }}
                     >
                         <Center>
-                        <MacbookModel14 
-                            scale={0.15} 
-                            image={currentContent.image} 
-                            zoom={currentContent.zoom} 
-                            moveX={currentContent.moveX}
-                            moveY={currentContent.moveY}
-                        />
+                            <MacbookModel14 
+                                scale={0.15} 
+                                image={currentContent.image} 
+                                zoom={currentContent.zoom} 
+                                moveX={currentContent.moveX}
+                                moveY={currentContent.moveY}
+                            />
                         </Center>
                     </PresentationControls>
                 </Canvas>
